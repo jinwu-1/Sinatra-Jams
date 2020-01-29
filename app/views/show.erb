@@ -2,3 +2,10 @@
 
 <p> Age: <%= @artists.age %> </p>
 <p> Bio: <%= @artists.bio %> </p>
+
+<form method="post" action="/artists/<%= @artists.id %>">
+  <input type="hidden" name="_method" value="DELETE" />
+  <ul>
+      <input type="submit" value = "delete"/>
+  </ul>
+</form>
