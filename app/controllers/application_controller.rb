@@ -11,4 +11,24 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  get "/artists" do
+    @artists = Artist.all
+    erb :artists
+  end
+
+  get "/artists/new" do
+    erb :form
+  end
+
+  get "/artists/:id" do
+    @artists = Artist.find(params[:id])
+    erb :show
+  end
+
+
+  post "/artists" do
+    @artists = Artist.create(params)
+    redirect to "/artists/#{ @artists.id }"
+  end
+
 end
